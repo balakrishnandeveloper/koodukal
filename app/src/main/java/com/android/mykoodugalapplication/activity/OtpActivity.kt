@@ -6,12 +6,17 @@ import android.os.CountDownTimer
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.android.mykoodugalapplication.databinding.OtpScreenLayoutBinding
+import com.android.mykoodugalapplication.viwemodel.LoginViewModel
 
 class OtpActivity : AppCompatActivity() {
 
     private lateinit var binding: OtpScreenLayoutBinding
-//    private lateinit var viewModel: OtpViewModel
+
+    private val viewModel by lazy {
+        ViewModelProvider(this)[LoginViewModel::class.java]
+    }
 
     private val timerDuration = 60000L
     private lateinit var countDownTimer: CountDownTimer
@@ -20,127 +25,91 @@ class OtpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = OtpScreenLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        viewModel = ViewModelProvider(this)[OtpViewModel::class.java]
-
         initView()
-//        observeApi()
+        observeApi()
     }
 
     private fun initView() {
-
         userInput = intent.getStringExtra("user_input") ?: ""
         type = intent.getStringExtra("type") ?: ""
 
         binding.etPhone.setText(userInput)
 
-        binding.backIv.setOnClickListener {
-            finish()
-        }
+        binding.backIv.setOnClickListener { finish() }
 
         binding.btnSendOtp.setOnClickListener {
-
             val mobile = binding.etPhone.text.toString().trim()
-
             if (mobile.length != 10) {
                 binding.etPhone.error = "Enter valid mobile number"
                 return@setOnClickListener
             }
-
-//            viewModel.sendOtp(mobile)
+            binding.btnSendOtp.isEnabled = false
+            viewModel.generateOtp(mobile)
         }
 
         binding.btnVerify.setOnClickListener {
-
             val otp = binding.etOtp.text.toString().trim()
-
             if (otp.length != 6) {
                 binding.etOtp.error = "Enter valid OTP"
                 return@setOnClickListener
             }
-
-//            viewModel.verifyOtp(
-//                binding.etPhone.text.toString().trim(),
-//                otp
-//            )
+            binding.btnVerify.isEnabled = false
+            viewModel.validateOtp(binding.etPhone.text.toString().trim(), otp)
         }
 
         binding.txtResend.setOnClickListener {
-
-//            viewModel.sendOtp(
-//                binding.etPhone.text.toString().trim()
-//            )
+            binding.txtResend.isEnabled = false
+            viewModel.generateOtp(binding.etPhone.text.toString().trim())
         }
     }
 
-//    private fun observeApi() {
-//
-//        viewModel.sendOtpResponse.observe(this) {
-//
-//            if (it.success) {
-//
-//                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-//
-//                binding.otpLayout.visibility = View.VISIBLE
-//                binding.etPhone.isEnabled = false
-//                binding.btnSendOtp.isEnabled = false
-//
-//                startTimer()
-//
-//            } else {
-//
-//                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//
-//        viewModel.verifyOtpResponse.observe(this) {
-//
-//            if (it.success) {
-//
-//                Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
-//
-//                startActivity(
-//                    Intent(this, WelcomeActivity::class.java)
-//                )
-//
-//                finish()
-//
-//            } else {
-//
-//                Toast.makeText(this, "Invalid OTP", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
+    private fun observeApi() {
+
+        viewModel.generateOtpResponse.observe(this) {
+            binding.btnSendOtp.isEnabled = true
+            if (it != null) {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                if (it.status == "1") {
+                    binding.otpLayout.visibility = View.VISIBLE
+                    binding.etPhone.isEnabled = false
+                    binding.btnSendOtp.isEnabled = false
+                    startTimer()
+                }
+            }
+        }
+
+        viewModel.validateOtpResponse.observe(this) {
+            binding.btnVerify.isEnabled = true
+            if (it != null) {
+                Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                if (it.status == "1") {
+                    // OTP validated — go to WelcomeActivity and clear back stack
+                    val intent = Intent(this, WelcomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+    }
 
     private fun startTimer() {
-
         binding.txtResend.isEnabled = false
-
-        countDownTimer =
-            object : CountDownTimer(timerDuration, 1000) {
-
-                override fun onTick(millisUntilFinished: Long) {
-
-                    binding.txtTimer.text =
-                        "Resend OTP in ${millisUntilFinished / 1000} sec"
-                }
-
-                override fun onFinish() {
-
-                    binding.txtTimer.text = "You can resend OTP"
-
-                    binding.txtResend.isEnabled = true
-                }
-
-            }.start()
+        countDownTimer = object : CountDownTimer(timerDuration, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.txtTimer.text = "Resend OTP in ${millisUntilFinished / 1000} sec"
+            }
+            override fun onFinish() {
+                binding.txtTimer.text = "You can resend OTP"
+                binding.txtResend.isEnabled = true
+            }
+        }.start()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::countDownTimer.isInitialized)
-            countDownTimer.cancel()
+        if (::countDownTimer.isInitialized) countDownTimer.cancel()
     }
 }

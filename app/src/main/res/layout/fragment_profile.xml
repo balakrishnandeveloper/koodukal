@@ -147,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/dashboard_card_background"
                 app:layout_constraintEnd_toEndOf="@+id/etLocation"
                 app:layout_constraintStart_toStartOf="@+id/etLocation"
                 app:layout_constraintTop_toBottomOf="@+id/etLocation"

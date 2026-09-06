@@ -6,4 +6,7 @@
     <color name="link_color">#E0070E</color>
     <color name="blue_color">#00BCD4</color>
     <color name="hint_color">#80FFFFFF</color>
+    <color name="dashboard_card_background">#FFFFFF</color>
+    <color name="screen_background">#FFFFFF</color>
+    <color name="screen_text">#212121</color>
 </resources>

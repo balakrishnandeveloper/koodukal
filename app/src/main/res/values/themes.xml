@@ -1,26 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme -->
     <style name="Base.Theme.MyAndroidApplication"
-        parent="Theme.Material3.DayNight.NoActionBar">
+        parent="Theme.Material3.Light.NoActionBar">
 
-        <!-- Transparent Status Bar -->
-        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentStatus">false</item>
 
-        <!-- IMPORTANT: Status bar icon color -->
-        <!-- TRUE = dark icons (for white/light background) -->
         <item name="android:windowLightStatusBar">true</item>
 
         <item name="bottomNavigationStyle">@style/CustomBottomNav</item>
+        <!-- White status bar -->
+        <item name="android:statusBarColor">@android:color/white</item>
 
     </style>
 
     <style name="Theme.MyAndroidApplication"
         parent="Base.Theme.MyAndroidApplication" />
 
-    <!-- EditText Style -->
     <style name="edittext_style_without_drawable">
         <item name="android:singleLine">true</item>
         <item name="android:layout_height">wrap_content</item>
@@ -28,7 +24,8 @@
         <item name="android:background">@drawable/editext_bg</item>
     </style>
 
-    <style name="CustomBottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+    <style name="CustomBottomNav"
+        parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemRippleColor">@android:color/transparent</item>
     </style>
 
@@ -37,6 +34,7 @@
 
         <item name="colorPrimary">@color/app_color</item>
         <item name="colorSecondary">@color/app_color</item>
+
     </style>
 
 </resources>

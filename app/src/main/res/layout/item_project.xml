@@ -17,6 +17,7 @@
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/dashboard_card_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:cardUseCompatPadding="true">

@@ -1,22 +1,48 @@
 package com.android.mykoodugalapplication.dataClass
 
+import com.google.gson.annotations.SerializedName
+
 data class DashboardResponse(
-    val status: String,
-    val message: String,
-    val images: List<BannerImage>,
-    val statistics: Statistics
+
+    @field:SerializedName("status")
+    val status: String? = null,
+
+    @field:SerializedName("message")
+    val message: String? = null,
+
+    @field:SerializedName("images")
+    val images: List<BannerImage>? = null,
+
+    @field:SerializedName("statistics")
+    val statistics: Statistics? = null
 )
 
 data class BannerImage(
-    val img_url: String,
-    val text: String
+
+    @field:SerializedName("img_url")
+    val imgUrl: String? = null,
+
+    @field:SerializedName("text")
+    val text: String? = null
 )
 
 data class Statistics(
-    val location: String,
-    val total_nests: Int,
-    val active_nests: Int,
-    val eggs: Int,
-    val chicks: Int,
-    val top_district: String
+
+    @field:SerializedName("location")
+    val location: String? = null,
+
+    @field:SerializedName("total_nests")
+    val totalNests: Int? = null,
+
+    @field:SerializedName("active_nests")
+    val activeNests: Int? = null,
+
+    @field:SerializedName("eggs")
+    val eggs: Int? = null,
+
+    @field:SerializedName("chicks")
+    val chicks: Int? = null,
+
+    @field:SerializedName("top_district")
+    val topDistrict: String? = null
 )

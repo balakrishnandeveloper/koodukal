@@ -74,7 +74,7 @@
             android:exported="false" />
 
         <activity
-            android:name="com.android.mykoodugalapplication.activity.MainActivity"
+            android:name="com.android.mykoodugalapplication.activity.LoginActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
@@ -122,7 +122,7 @@
             android:theme="@style/Base.Theme.MyAndroidApplication"
             android:exported="false" />
         <activity
-            android:name="com.android.mykoodugalapplication.activity.LoginActivity"
+            android:name="com.android.mykoodugalapplication.activity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">

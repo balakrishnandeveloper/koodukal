@@ -2,6 +2,7 @@ package com.android.mykoodugalapplication.commonUtils
 
 import android.app.Application
 import android.content.Intent
+import androidx.appcompat.app.AppCompatDelegate
 import com.android.mykoodugalapplication.activity.MainActivity
 import com.google.firebase.FirebaseApp
 import com.onesignal.OSNotificationOpenedResult
@@ -12,6 +13,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         FirebaseApp.initializeApp(this)
         val ONESIGNAL_APP_ID = "c75a93ad-3fc0-4f21-a49a-d6b9e9ff8b5f"
 
@@ -35,7 +37,5 @@ class MyApplication : Application() {
             }
             startActivity(intent)
         }
-
     }
 }
-

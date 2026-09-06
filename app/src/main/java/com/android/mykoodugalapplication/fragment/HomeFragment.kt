@@ -12,13 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.android.mykoodugalapplication.R
 import com.android.mykoodugalapplication.activity.MainActivity
+import com.android.mykoodugalapplication.adapter.BannerSliderAdapter
 import com.android.mykoodugalapplication.adapter.SliderAdapter
 import com.android.mykoodugalapplication.commonUtils.PreferenceManager
+import com.android.mykoodugalapplication.dataClass.BannerImage
 import com.android.mykoodugalapplication.dataClass.SliderModel
 import com.android.mykoodugalapplication.viwemodel.LoginViewModel
-import com.onesignal.CallbackThreadManager.Companion.preference
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
@@ -26,13 +26,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var viewPager: ViewPager2
     private lateinit var txtDate: TextView
-    private lateinit var txtTime: TextView
-    private val handler = Handler(Looper.getMainLooper())
-    private lateinit var runnable: Runnable
-    private lateinit var txtSlide: TextView
+    private lateinit var txtLocation: TextView
+    private lateinit var txtTotalNest: TextView
+    private lateinit var txtActiveNest: TextView
+    private lateinit var txtEggs: TextView
+    private lateinit var txtChicks: TextView
+    private lateinit var txtLeaderboard: TextView
     private lateinit var layoutSlideBtn: LinearLayout
-    private lateinit var preference: PreferenceManager
+    private lateinit var txtSlide: TextView
 
+    private val handler = Handler(Looper.getMainLooper())
+    private var autoScrollRunnable: Runnable? = null
+    private lateinit var preference: PreferenceManager
 
     private val viewModel by lazy {
         ViewModelProvider(this)[LoginViewModel::class.java]
@@ -41,27 +46,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewPager = view.findViewById(R.id.viewPagerSlider)
-        txtDate = view.findViewById(R.id.txtDate)
-        txtTime = view.findViewById(R.id.txtTime)
-        layoutSlideBtn = view.findViewById(R.id.layoutSlideBtn)
-        txtSlide = view.findViewById(R.id.txtSlide)
+        viewPager       = view.findViewById(R.id.viewPagerSlider)
+        txtDate         = view.findViewById(R.id.txtDate)
+        txtLocation     = view.findViewById(R.id.txtLocation)
+        txtTotalNest    = view.findViewById(R.id.txtTotalNest)
+        txtActiveNest   = view.findViewById(R.id.txtActiveNest)
+        txtEggs         = view.findViewById(R.id.txtEggs)
+        txtChicks       = view.findViewById(R.id.txtChicks)
+        txtLeaderboard  = view.findViewById(R.id.txtLeaderboard)
+        layoutSlideBtn  = view.findViewById(R.id.layoutSlideBtn)
+        txtSlide        = view.findViewById(R.id.txtSlide)
+
         preference = PreferenceManager(requireContext())
-        val userId = preference.getUserId()
-        val token = preference.getToken()
 
-        viewModel.getDashboard(userId, token)
-
-        setTimeBasedImage()
-        setupSlider()
         showDateTime()
-        clcikable()
-        observer()
+        setupStaticSlider()      // show local images while API loads
+        setupClickListeners()
+        observeDashboard()
+
+        // trigger API call on fragment enter
+        viewModel.getDashboard(preference.getUserId(), preference.getToken())
     }
 
-    private fun clcikable() {
+    private fun setupClickListeners() {
         layoutSlideBtn.setOnClickListener {
-
             handler.postDelayed({
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, NestInstalledFragment())
@@ -72,69 +80,78 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-
-    private fun setTimeBasedImage() {
-
-        val calendar = Calendar.getInstance()
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-
-    }
-
-    private fun setupSlider() {
-
+    private fun setupStaticSlider() {
         val list = listOf(
             SliderModel(R.drawable.sparrow1, "Save Sparrows Save Nature"),
             SliderModel(R.drawable.sparrow2, "Provide Water for Birds"),
             SliderModel(R.drawable.sparrow3, "Plant Trees for Birds")
         )
+        viewPager.adapter = SliderAdapter(list)
+        startAutoScroll(list.size)
+    }
 
-        val adapter = SliderAdapter(list)
-        viewPager.adapter = adapter
+    private fun setupApiBannerSlider(banners: List<BannerImage>) {
+        stopAutoScroll()
+        viewPager.adapter = BannerSliderAdapter(banners)
+        startAutoScroll(banners.size)
+    }
 
-        runnable = Runnable {
-
-            val current = viewPager.currentItem
-
-            if (current == list.size - 1) {
-                viewPager.currentItem = 0
-            } else {
-                viewPager.currentItem = current + 1
-            }
-        }
-
-        handler.postDelayed(object : Runnable {
+    private fun startAutoScroll(itemCount: Int) {
+        stopAutoScroll()
+        if (itemCount < 2) return
+        autoScrollRunnable = object : Runnable {
             override fun run() {
-                runnable.run()
+                val next = (viewPager.currentItem + 1) % itemCount
+                viewPager.currentItem = next
                 handler.postDelayed(this, 3000)
             }
-        }, 3000)
+        }
+        handler.postDelayed(autoScrollRunnable!!, 3000)
+    }
+
+    private fun stopAutoScroll() {
+        autoScrollRunnable?.let { handler.removeCallbacks(it) }
+        autoScrollRunnable = null
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        handler.removeCallbacksAndMessages(null)
+        stopAutoScroll()
     }
 
-    private fun showDateTime(){
-
+    private fun showDateTime() {
         val sdfDate = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
-        val sdfTime = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
-
-        val currentDate = sdfDate.format(Date())
-        val currentTime = sdfTime.format(Date())
-
-        txtDate.text = "Date: $currentDate"
-        txtTime.text = "Time: $currentTime"
+        txtDate.text = "Date: ${sdfDate.format(Date())}"
     }
 
-    private fun observer(){
+    private fun observeDashboard() {
         viewModel.dashDetailsResponse.observe(viewLifecycleOwner) { response ->
+            if (response == null) return@observe
 
             if (response.status == "1") {
-                Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
 
+                // bind statistics to UI
+                response.statistics?.let { stats ->
+                    txtLocation.text   = "📍 ${stats.location ?: "-"}"
+                    txtTotalNest.text  = stats.totalNests?.toString() ?: "0"
+                    txtActiveNest.text = stats.activeNests?.toString() ?: "0"
+                    txtEggs.text       = stats.eggs?.toString() ?: "0"
+                    txtChicks.text     = stats.chicks?.toString() ?: "0"
+                    txtLeaderboard.text = "🏆 Top District: ${stats.topDistrict ?: "-"}"
+                }
+
+                // replace static slider with API banners
+                response.images?.let { banners ->
+                    if (banners.isNotEmpty()) setupApiBannerSlider(banners)
+                }
+
+            } else {
+                Toast.makeText(
+                    context,
+                    response.message ?: "Failed to load dashboard",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
-
 }

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/dashboard_card_background"
     app:cardElevation="4dp">
 
     <FrameLayout
