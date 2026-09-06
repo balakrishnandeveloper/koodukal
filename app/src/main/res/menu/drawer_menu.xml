@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_projects"
+        android:title="Projects"
+        android:icon="@drawable/ic_projects"/>
+
+    <item
+        android:id="@+id/menu_recognitions"
+        android:title="Recognitions"
+        android:icon="@drawable/ic_award"/>
+
+    <item
+        android:id="@+id/menu_media_partners"
+        android:title="Media Partners"
+        android:icon="@drawable/ic_media"/>
+
+    <item
+        android:id="@+id/menu_corporate"
+        android:title="Corporate Partners"
+        android:icon="@drawable/ic_corporate"/>
+
+    <item
+        android:id="@+id/menu_contact"
+        android:title="Contact Us"
+        android:icon="@drawable/ic_contact"/>
+
+    <item
+        android:id="@+id/menu_feedback"
+        android:title="Feedback"
+        android:icon="@drawable/ic_donation"/>
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="About Us"
+        android:icon="@drawable/ic_info"/>
+
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"/>
+
+    <item
+        android:id="@+id/menu_delete"
+        android:title="Delete Account"
+        android:icon="@drawable/ic_delete"/>
+
+</menu>

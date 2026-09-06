@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_layer_two"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/iv_layer_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_layer_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left_arrow_ic"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nests Box Details"
+            android:textColor="@color/app_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_logo"
+            app:layout_constraintEnd_toStartOf="@+id/iv_logo"
+            app:layout_constraintStart_toEndOf="@+id/back_iv"
+            app:layout_constraintTop_toTopOf="@+id/iv_logo" />
+
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/title_txt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/inner_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_green_border"
+                app:layout_constraintTop_toBottomOf="@+id/iv_layer_one"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <!-- TITLE -->
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Nest Box ID"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <!-- Nest Box ID -->
+                <EditText
+                    android:id="@+id/etNestId"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:hint="Type here..."
+                    android:background="@drawable/edittext_green_border"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+                <TextView
+                    android:id="@+id/date_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Nest Installation Date"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/etNestId"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <!-- Installation Date -->
+                <TextView
+                    android:id="@+id/etDate"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:hint="Choose Date"
+                    android:focusable="false"
+                    android:background="@drawable/edittext_green_border"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/date_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <!-- Received From -->
+                <TextView
+                    android:id="@+id/txtReceived"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Received From"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/etDate"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <LinearLayout
+                    android:id="@+id/receivedGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/txtReceived"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="School"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Corporate"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="College"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Koodugal Team"/>
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Self Made"/>
+
+                </LinearLayout>
+
+                <!-- Nest Type -->
+                <TextView
+                    android:id="@+id/txtNestType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Nest Type"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/receivedGroup"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <LinearLayout
+                    android:id="@+id/nestTypeGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/txtNestType"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Wooden"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Clay"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Wall cavity"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Well cavity"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Cardboard box"/>
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Other"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/floor_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Floor (Number)"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@id/nestTypeGroup"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <!-- Floor -->
+                <EditText
+                    android:id="@+id/etFloor"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:hint="Type here..."
+                    android:inputType="number"
+                    android:background="@drawable/edittext_green_border"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/floor_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+                <TextView
+                    android:id="@+id/height_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Height from surface (feet)"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/etFloor"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <!-- Height -->
+                <EditText
+                    android:id="@+id/etHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:hint="Height from surface (feet)"
+                    android:inputType="number"
+                    android:background="@drawable/edittext_green_border"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/height_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <!-- Direction -->
+                <TextView
+                    android:id="@+id/txtDirection"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Direction Facing"
+                    android:textStyle="bold"
+                    android:textColor="@color/app_color"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/etHeight"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <RadioGroup
+                    android:id="@+id/dirction_rd"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/txtDirection"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="North"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="South"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="East"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="West"/>
+
+                </RadioGroup>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnNext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="Next"
+                    android:textColor="@color/app_color"
+                    android:background="@drawable/edittext_green_border"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dirction_rd"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </ScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

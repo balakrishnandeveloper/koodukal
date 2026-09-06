@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_layer_two"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/iv_layer_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_layer_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/back_iv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/left_arrow_ic"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nest Box Occupation Status"
+            android:textColor="@color/app_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_logo"
+            app:layout_constraintEnd_toStartOf="@+id/iv_logo"
+            app:layout_constraintStart_toEndOf="@+id/back_iv"
+            app:layout_constraintTop_toTopOf="@+id/iv_logo" />
+
+
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/title_txt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/inner_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext_green_border"
+                app:layout_constraintTop_toBottomOf="@+id/iv_layer_one"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:padding="16dp">
+
+                    <!-- TITLE -->
+                    <TextView
+                        android:text="Nest Occupation Status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <!-- EMPTY -->
+                    <CheckBox
+                        android:id="@+id/cbEmpty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Empty"
+                        android:layout_marginTop="10dp"/>
+
+                    <!-- SPARROW VISITING -->
+                    <CheckBox
+                        android:id="@+id/cbVisiting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sparrow Visiting"
+                        android:layout_marginTop="10dp"/>
+
+                    <!-- Visiting Details -->
+                    <LinearLayout
+                        android:id="@+id/layoutVisiting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Existing"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="First Time Visiting"/>
+
+                        <EditText
+                            android:id="@+id/etCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Number of Sparrows"
+                            android:inputType="number"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Both"/>
+
+                        <EditText
+                            android:id="@+id/etVisitDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Date &amp; Time"
+                            android:focusable="false"/>
+
+                        <LinearLayout
+                            android:id="@+id/upload_linear_new"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etAbandoned">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/upload_bt_new"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Upload Image"
+                                android:textColor="@color/app_color"
+                                android:background="@drawable/edittext_green_border"/>
+
+                            <!-- Red Count Badge -->
+                            <TextView
+                                android:id="@+id/tvImageCount_new"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/bg_red_circle"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+
+                            <!-- View Button -->
+                            <TextView
+                                android:id="@+id/tvViewImages_new"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:background="@drawable/bg_view_button"
+                                android:paddingHorizontal="18dp"
+                                android:paddingVertical="8dp"
+                                android:text="View"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <!-- NESTING -->
+                    <CheckBox
+                        android:id="@+id/cbNesting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nesting in Progress"
+                        android:layout_marginTop="10dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutNesting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/etStartDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Start Date"
+                            android:focusable="false"/>
+
+                        <EditText
+                            android:id="@+id/etEndDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="End Date"
+                            android:focusable="false"/>
+                    </LinearLayout>
+
+                    <!-- EGGS -->
+                    <CheckBox
+                        android:id="@+id/cbEggs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Eggs Observed"
+                        android:layout_marginTop="10dp"/>
+
+                    <EditText
+                        android:id="@+id/etEggDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_green_border"
+                        android:hint="Egg Date"
+                        android:focusable="false"
+                        android:visibility="gone"/>
+
+                    <!-- CHICKS -->
+                    <CheckBox
+                        android:id="@+id/cbChicks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chicks Present"
+                        android:layout_marginTop="10dp"/>
+
+                    <LinearLayout
+                        android:id="@+id/layoutChicks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/etChickDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Date"
+                            android:focusable="false"/>
+
+                        <LinearLayout
+                            android:id="@+id/upload_linear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/etAbandoned">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/upload_bt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Upload Image"
+                                android:textColor="@color/app_color"
+                                android:background="@drawable/edittext_green_border"/>
+
+                            <!-- Red Count Badge -->
+                            <TextView
+                                android:id="@+id/tvImageCount"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/bg_red_circle"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="@color/white"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+
+                            <!-- View Button -->
+                            <TextView
+                                android:id="@+id/tvViewImages"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:background="@drawable/bg_view_button"
+                                android:paddingHorizontal="18dp"
+                                android:paddingVertical="8dp"
+                                android:text="View"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+
+                        <EditText
+                            android:id="@+id/etChickCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Number of Chicks"
+                            android:layout_marginTop="10dp"
+                            android:inputType="number"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Parental Feeding"/>
+
+                        <EditText
+                            android:id="@+id/etFlewDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Flew Out Date"
+                            android:focusable="false"/>
+
+                        <EditText
+                            android:id="@+id/etFlewCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/edittext_green_border"
+                            android:hint="Flew Count"
+                            android:inputType="number"/>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:text="Abandoned - Remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"/>
+
+                    <!-- OTHER STATUS -->
+                    <EditText
+                        android:id="@+id/etAbandoned"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_green_border"
+                        android:hint="Type here..."
+                        android:layout_marginTop="10dp"/>
+
+
+                    <TextView
+                        android:text="Damaged - Remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"/>
+
+                    <EditText
+                        android:id="@+id/etDamaged"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edittext_green_border"
+                        android:hint="Type here..."/>
+
+                    <TextView
+                        android:text="Removed - Remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/black"/>
+
+
+                    <EditText
+                        android:id="@+id/etRemoved"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/edittext_green_border"
+                        android:hint="Type here..."/>
+
+                    <!-- SUBMIT -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:text="Next"
+                        android:textColor="@color/app_color"
+                        android:background="@drawable/edittext_green_border"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
+                        app:layout_constraintTop_toBottomOf="@+id/dirction_rd" />
+
+
+                </LinearLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </ScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

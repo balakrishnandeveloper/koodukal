@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.android.mykoodugalapplication">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <application
+        android:name="com.android.mykoodugalapplication.commonUtils.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyAndroidApplication"
+        tools:targetApi="31">
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.ProjectsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.RecognitionsActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.MediaActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.OtpActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.SparrowDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.SparrowOccupationStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.EnvironmentalDataActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.SparrowSpottedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.ImageUploadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.ImagePreviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Base.Theme.MyAndroidApplication"
+            android:exported="false" />
+        <activity
+            android:name="com.android.mykoodugalapplication.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+
+    </application>
+
+
+
+</manifest>

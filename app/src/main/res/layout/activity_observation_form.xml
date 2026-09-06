@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Observation Type -->
+
+        <TextView
+            android:text="Select Observation Type"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"/>
+
+        <RadioGroup
+            android:id="@+id/radioObservationType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radioSparrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sparrow Spotted"/>
+
+            <RadioButton
+                android:id="@+id/radioNest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Koodugal Nest Box"/>
+        </RadioGroup>
+
+
+        <!-- SPARROW SECTION -->
+
+        <LinearLayout
+            android:id="@+id/layoutSparrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date  Time (Auto)"/>
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auto Captured"/>
+
+            <Button
+                android:id="@+id/btnUploadImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Image / Video"/>
+
+            <Button
+                android:id="@+id/btnCaptureLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture Location"/>
+
+        </LinearLayout>
+
+
+        <!-- NEST BOX SECTION -->
+
+        <LinearLayout
+            android:id="@+id/layoutNest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/edtNestId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Nest Box ID"/>
+
+            <EditText
+                android:id="@+id/edtFloor"
+                android:hint="Floor Number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/edtHeight"
+                android:hint="Height from Surface (feet)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerDirection"/>
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerNestType"/>
+
+        </LinearLayout>
+
+
+        <!-- OCCUPATION STATUS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nest Occupation Status"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerStatus"/>
+
+
+        <!-- SAVE BUTTON -->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSave"
+            android:text="Submit Observation"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

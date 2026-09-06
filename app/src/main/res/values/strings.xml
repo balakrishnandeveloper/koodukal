@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Koodugal</string>
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="about_title">About Us</string>
+    <string name="recong_title">Recognitions</string>
+    <string name="register_sub_title">Create your new account</string>
+    <string name="type_here_name">Enter Your Full Name</string>
+    <string name="type_here_email">Enter Your Email Address</string>
+    <string name="type_here_phone">Enter Your Phone Number</string>
+    <string name="type_here_password">Create password</string>
+    <string name="profile_pic">Profile Picture</string>
+    <string name="date_birth">Date of Birth</string>
+    <string name="agree_txt">I agree to the Terms and Conditions and Privacy Policy</string>
+    <string name="welcome_txt">Welcome Back,</string>
+    <string name="welcome_content_txt">Koodugal Achievements</string>
+    <string name="welcome_sub_content_txt_one">Total no of nest distributed: 11+</string>
+    <string name="welcome_sub_content_txt_two">Sparrow utilized our nest: 6k+</string>
+    <string name="welcome_sub_content_txt_three">No of volunteers reached: 11k+</string>
+    <string name="welcome_sub_content_txt_four">No of projects: 09</string>
+    <string name="welcome_sub_content_txt_five">No of schools in collaboration: 40+</string>
+    <string name="welcome_sub_content_txt_six">No of states travelled: 04</string>
+    <string name="welcome_next">Next</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Close drawer</string>
+
+    <!--    <string name="default_web_client_id">994819547766-mkkfr2rqbcjd8pr67igtrf3s0o0a1bom.apps.googleusercontent.com</string>-->
+
+</resources>

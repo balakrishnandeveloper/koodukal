@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1071263772769",
+    "project_id": "koodugalapp-f837f",
+    "storage_bucket": "koodugalapp-f837f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071263772769:android:9c2ed1dd95cc2f2850fa20",
+        "android_client_info": {
+          "package_name": "com.android.mykoodugalapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3D5eop2sGfwyTLPo8byD0N1swLrpyFpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.MyAndroidApplication" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Transparent Status Bar -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+
+        <!-- IMPORTANT: Status bar icon color -->
+        <!-- TRUE = dark icons (for white/light background) -->
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+</resources>
